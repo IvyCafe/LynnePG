@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RP Lab", "RP Lab.csproj", "{A08F3F81-8205-4C6F-8C80-0981D273691B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPLab", "RPLab.csproj", "{A08F3F81-8205-4C6F-8C80-0981D273691B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

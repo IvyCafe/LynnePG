@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="RP Lab"
+project/assembly_name="RPLab"
 
 [input]
 
