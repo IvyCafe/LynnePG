@@ -25,7 +25,7 @@ texture = ExtResource("1_nqww8")
 shape = SubResource("RectangleShape2D_oceo1")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
-position = Vector2(445, 595)
+position = Vector2(645, 613)
 up_direction = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
