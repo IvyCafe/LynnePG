@@ -20,7 +20,7 @@ config/icon="res://res/icon.svg"
 
 [dotnet]
 
-project/assembly_name="RPLab"
+project/assembly_name="LynnePG"
 
 [input]
 
