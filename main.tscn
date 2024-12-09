@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4iolnqhnlbty"]
 
-[ext_resource type="Script" path="res://CharacterBody2d.cs" id="1_fhqqh"]
-[ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://icon.svg" id="1_nqww8"]
+[ext_resource type="Script" path="res://src/CharacterBody2d.cs" id="1_fhqqh"]
+[ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_nqww8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oceo1"]
 size = Vector2(127, 125)

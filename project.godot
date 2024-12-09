@@ -15,8 +15,8 @@ config/name_localized={
 "ja_JP": "試験場のリン"
 }
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
+config/icon="res://res/icon.svg"
 
 [dotnet]
 
