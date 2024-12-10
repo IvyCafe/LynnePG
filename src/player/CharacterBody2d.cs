@@ -6,7 +6,7 @@ public partial class CharacterBody2d : CharacterBody2D
 	[Export]
 	public float Speed { get; set; } = 300.0f;
 	[Export]
-	public float JumpVelocity { get; set; } = -550.0f;
+	public float JumpVelocity { get; set; } = -600.0f;
 
 	public override void _PhysicsProcess(double delta)
 	{

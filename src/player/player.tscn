@@ -9,7 +9,6 @@ height = 172.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_q416h")
-JumpVelocity = -600.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
