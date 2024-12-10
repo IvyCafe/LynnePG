@@ -1,28 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://4iolnqhnlbty"]
+[gd_scene load_steps=9 format=3 uid="uid://4iolnqhnlbty"]
 
 [ext_resource type="Script" path="res://src/CharacterBody2d.cs" id="1_fhqqh"]
 [ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_nqww8"]
+[ext_resource type="Script" path="res://src/Gun.cs" id="3_neoqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oceo1"]
-size = Vector2(127, 125)
+size = Vector2(88.5, 164.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqcvw"]
+radius = 10.9949
+height = 78.0247
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gln0"]
 size = Vector2(1131.75, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klaul"]
+size = Vector2(129.5, 94)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxhrd"]
 size = Vector2(1402, 202)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Lynne" type="CharacterBody2D" parent="."]
 position = Vector2(262, 159)
 script = ExtResource("1_fhqqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Lynne"]
+scale = Vector2(0.710938, 1.32031)
 texture = ExtResource("1_nqww8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lynne"]
 shape = SubResource("RectangleShape2D_oceo1")
+
+[node name="Gun" type="CharacterBody2D" parent="Lynne"]
+script = ExtResource("3_neoqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lynne/Gun"]
+position = Vector2(61, -4)
+scale = Vector2(0.814499, 0.287231)
+texture = ExtResource("1_nqww8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lynne/Gun"]
+position = Vector2(61, -5)
+rotation = -1.59154
+shape = SubResource("CapsuleShape2D_mqcvw")
+disabled = true
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(645, 613)
@@ -34,6 +57,17 @@ texture = ExtResource("1_nqww8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
 shape = SubResource("RectangleShape2D_2gln0")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="CharacterBody2D2"]
+position = Vector2(370, -179)
+up_direction = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2/CharacterBody2D2"]
+scale = Vector2(1.04688, 0.78125)
+texture = ExtResource("1_nqww8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/CharacterBody2D2"]
+shape = SubResource("RectangleShape2D_klaul")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
