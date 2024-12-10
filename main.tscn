@@ -31,9 +31,10 @@ texture = ExtResource("1_nqww8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_1q7qm")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-262, -159)
-anchor_mode = 0
+[node name="Camera" type="Camera2D" parent="Player"]
+position = Vector2(300, 0)
+limit_top = 0
+limit_bottom = 0
 
 [node name="Gun" type="CharacterBody2D" parent="Player"]
 script = ExtResource("3_neoqn")
