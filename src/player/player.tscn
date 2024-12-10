@@ -1,19 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://brt8i2p76fj4x"]
 
 [ext_resource type="Script" path="res://src/player/CharacterBody2d.cs" id="1_q416h"]
-[ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="2_3mx3b"]
+[ext_resource type="Texture2D" uid="uid://hyidpx0vrio3" path="res://res/lynne.png" id="3_2rl6l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q7qm"]
-radius = 44.0
-height = 168.0
+radius = 42.0
+height = 172.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_q416h")
 JumpVelocity = -600.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.710938, 1.32031)
-texture = ExtResource("2_3mx3b")
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(3, 3)
+texture = ExtResource("3_2rl6l")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1q7qm")
