@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://4iolnqhnlbty"]
+[gd_scene load_steps=8 format=3 uid="uid://4iolnqhnlbty"]
 
 [ext_resource type="Script" path="res://src/CharacterBody2d.cs" id="1_fhqqh"]
 [ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_nqww8"]
 [ext_resource type="Script" path="res://src/Gun.cs" id="3_neoqn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oceo1"]
-size = Vector2(88.5, 164.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q7qm"]
+radius = 44.0
+height = 168.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqcvw"]
 radius = 10.9949
@@ -17,61 +18,67 @@ size = Vector2(1131.75, 127)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klaul"]
 size = Vector2(129.5, 94)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxhrd"]
-size = Vector2(1402, 202)
-
 [node name="Node2D" type="Node2D"]
 
-[node name="Lynne" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(262, 159)
 script = ExtResource("1_fhqqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Lynne"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.710938, 1.32031)
 texture = ExtResource("1_nqww8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lynne"]
-shape = SubResource("RectangleShape2D_oceo1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_1q7qm")
 
-[node name="Gun" type="CharacterBody2D" parent="Lynne"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-262, -159)
+anchor_mode = 0
+
+[node name="Gun" type="CharacterBody2D" parent="Player"]
 script = ExtResource("3_neoqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Lynne/Gun"]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Gun"]
 position = Vector2(61, -4)
 scale = Vector2(0.814499, 0.287231)
 texture = ExtResource("1_nqww8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lynne/Gun"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Gun"]
 position = Vector2(61, -5)
 rotation = -1.59154
 shape = SubResource("CapsuleShape2D_mqcvw")
 disabled = true
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+[node name="Ground" type="CharacterBody2D" parent="."]
 position = Vector2(645, 613)
 up_direction = Vector2(0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
 scale = Vector2(8.79688, 1)
 texture = ExtResource("1_nqww8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_2gln0")
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="CharacterBody2D2"]
-position = Vector2(370, -179)
+[node name="Object" type="CharacterBody2D" parent="Ground"]
+position = Vector2(370, -166)
 up_direction = Vector2(0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2/CharacterBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Object"]
 scale = Vector2(1.04688, 0.78125)
 texture = ExtResource("1_nqww8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/CharacterBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Object"]
 shape = SubResource("RectangleShape2D_klaul")
 
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
+[node name="Object2" type="CharacterBody2D" parent="Ground"]
+position = Vector2(-341, -52)
+rotation = 0.774137
+up_direction = Vector2(0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(524, 598)
-shape = SubResource("RectangleShape2D_mxhrd")
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Object2"]
+scale = Vector2(1.04688, 0.78125)
+texture = ExtResource("1_nqww8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Object2"]
+shape = SubResource("RectangleShape2D_klaul")
