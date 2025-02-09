@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://brt8i2p76fj4x"]
 
 [ext_resource type="Script" path="res://src/player/CharacterBody2d.cs" id="1_q416h"]
-[ext_resource type="Texture2D" uid="uid://c5tirshkfm4ar" path="res://res/lynne-idle.png" id="3_1bsg7"]
+[ext_resource type="Texture2D" uid="uid://b3fke5ff3adwc" path="res://res/lynne-idle.png" id="3_1bsg7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1e6v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk313"]
 atlas = ExtResource("3_1bsg7")
 region = Rect2(0, 0, 60, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6n5p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_segx6"]
 atlas = ExtResource("3_1bsg7")
 region = Rect2(60, 0, 60, 80)
 
@@ -15,10 +15,10 @@ region = Rect2(60, 0, 60, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u1e6v")
+"texture": SubResource("AtlasTexture_fk313")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n6n5p")
+"texture": SubResource("AtlasTexture_segx6")
 }],
 "loop": true,
 "name": &"idle",
@@ -37,6 +37,7 @@ position = Vector2(0, -10)
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_73taw")
 animation = &"idle"
+frame_progress = 0.469246
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1q7qm")

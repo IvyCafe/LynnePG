@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fke5ff3adwc"
-path="res://.godot/imported/lynne-idle.png-2eea08f755c02a295deb93b60ca78faf.ctex"
+uid="uid://ben4m28v53c8l"
+path="res://.godot/imported/map-texture2.png-72f1682f756b915d68269cb9df2e1348.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/lynne-idle.png"
-dest_files=["res://.godot/imported/lynne-idle.png-2eea08f755c02a295deb93b60ca78faf.ctex"]
+source_file="res://res/map-texture2.png"
+dest_files=["res://.godot/imported/map-texture2.png-72f1682f756b915d68269cb9df2e1348.ctex"]
 
 [params]
 
