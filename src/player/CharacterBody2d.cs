@@ -8,6 +8,13 @@ public partial class CharacterBody2d : CharacterBody2D
 	[Export]
 	public float JumpVelocity { get; set; } = -600.0f;
 
+	private AnimatedSprite2D _lynneSprite;
+
+	public override void _Ready()
+	{
+		_lynneSprite = GetNode<AnimatedSprite2D>("LynneSprite");
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -30,5 +37,16 @@ public partial class CharacterBody2d : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+
+		_lynneSprite.Play("idle");
+		UpdateFacingDirection();
+	}
+
+	public void UpdateFacingDirection()
+	{
+		if (Velocity.X < 0)
+			_lynneSprite.FlipH = true;
+		else if (Velocity.X > 0)
+			_lynneSprite.FlipH = false;
 	}
 }

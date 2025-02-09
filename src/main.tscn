@@ -37,7 +37,7 @@ disabled = true
 remote_path = NodePath("../../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(-494, 287)
+position = Vector2(-494, 484)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
