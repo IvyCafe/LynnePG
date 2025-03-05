@@ -1,0 +1,16 @@
+changelog:
+  categories:
+    - title: Features
+      labels:
+        - "enhancement"
+    - title: Bugfixes
+      labels:
+        - "bug"
+    - title: Dependencies
+      labels:
+        - "dependencies"
+      authors:
+        - dependabot
+    - title: Others
+      labels:
+        - "*"
