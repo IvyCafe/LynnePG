@@ -4,7 +4,10 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>LynnePG</RootNamespace>
   </PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Godot.SourceGenerators" Version="4.4.1" />
-  <PackageReference Include="GodotSharp" Version="4.4.1" />
-  <PackageReference Include="GodotSharpEditor" Version="4.4.1" /></ItemGroup></Project>
+
+  <ItemGroup>
+    <PackageReference Include="Godot.SourceGenerators" Version="4.4.1" />
+    <PackageReference Include="GodotSharp" Version="4.4.1" />
+    <PackageReference Include="GodotSharpEditor" Version="4.4.1" />
+  </ItemGroup>
+</Project>
