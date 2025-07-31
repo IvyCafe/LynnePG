@@ -14,6 +14,7 @@ height = 78.0247
 [node name="Map" parent="." instance=ExtResource("1_2s5wl")]
 
 [node name="Player" parent="." instance=ExtResource("2_wyayg")]
+z_index = 10
 position = Vector2(-494, 484)
 Speed = 500.0
 JumpVelocity = -640.0
