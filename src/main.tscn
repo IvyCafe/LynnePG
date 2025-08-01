@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://4iolnqhnlbty"]
+[gd_scene load_steps=7 format=3 uid="uid://4iolnqhnlbty"]
 
 [ext_resource type="PackedScene" uid="uid://crvpnyynxgmpy" path="res://src/map.tscn" id="1_2s5wl"]
 [ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_nqww8"]
 [ext_resource type="PackedScene" uid="uid://brt8i2p76fj4x" path="res://src/player/player.tscn" id="2_wyayg"]
 [ext_resource type="Script" path="res://src/Gun.cs" id="3_neoqn"]
+[ext_resource type="Texture2D" uid="uid://da64h3u6dnhvu" path="res://res/bg.png" id="5_0gsnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqcvw"]
 radius = 10.9949
@@ -43,3 +44,14 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -720)
+motion_mirroring = Vector2(2560, 1920)
+
+[node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_0gsnw")
+centered = false
