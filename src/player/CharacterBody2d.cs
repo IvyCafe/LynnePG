@@ -7,6 +7,8 @@ public partial class CharacterBody2d : CharacterBody2D
 	public float Speed { get; set; } = 300.0f;
 	[Export]
 	public float JumpVelocity { get; set; } = -600.0f;
+	[Export]
+	public float Gravity { get; set; } = 1.0f;
 
 	private AnimatedSprite2D _lynneSprite;
 
@@ -21,7 +23,7 @@ public partial class CharacterBody2d : CharacterBody2D
 
 		// Add the gravity.
 		if (!IsOnFloor())
-			velocity += GetGravity() * (float)delta;
+			velocity += GetGravity() * (float)delta * Gravity;
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
