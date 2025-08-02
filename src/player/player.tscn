@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://brt8i2p76fj4x"]
+[gd_scene load_steps=12 format=3 uid="uid://brt8i2p76fj4x"]
 
 [ext_resource type="Script" path="res://src/player/CharacterBody2d.cs" id="1_q416h"]
 [ext_resource type="Texture2D" uid="uid://b3fke5ff3adwc" path="res://res/lynne-idle.png" id="3_1bsg7"]
+[ext_resource type="Texture2D" uid="uid://3l1s0mo4ha1e" path="res://res/lynne-running.png" id="3_unggv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk313"]
 atlas = ExtResource("3_1bsg7")
@@ -10,6 +11,22 @@ region = Rect2(0, 0, 60, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_segx6"]
 atlas = ExtResource("3_1bsg7")
 region = Rect2(60, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gebnv"]
+atlas = ExtResource("3_unggv")
+region = Rect2(0, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t38jx"]
+atlas = ExtResource("3_unggv")
+region = Rect2(60, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nyy5"]
+atlas = ExtResource("3_unggv")
+region = Rect2(120, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1hcq"]
+atlas = ExtResource("3_unggv")
+region = Rect2(180, 0, 60, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_73taw"]
 animations = [{
@@ -23,6 +40,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gebnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t38jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nyy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1hcq")
+}],
+"loop": true,
+"name": &"running",
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q7qm"]
@@ -36,8 +70,8 @@ script = ExtResource("1_q416h")
 position = Vector2(0, -10)
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_73taw")
-animation = &"idle"
-frame_progress = 0.469246
+animation = &"running"
+frame_progress = 0.828219
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1q7qm")

@@ -40,7 +40,11 @@ public partial class CharacterBody2d : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 
-		_lynneSprite.Play("idle");
+		if (velocity.X != 0)
+			_lynneSprite.Play("running");
+		else
+			_lynneSprite.Play("idle");
+
 		UpdateFacingDirection();
 	}
 
