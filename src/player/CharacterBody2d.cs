@@ -12,6 +12,10 @@ public partial class CharacterBody2d : CharacterBody2D
 
 	private AnimatedSprite2D _lynneSprite;
 
+	[Export]
+	public float GunSpeed { get; set; } = 1000.0f;
+	readonly PackedScene bullet = GD.Load<PackedScene>("res://src/bullet.tscn");
+
 	public override void _Ready()
 	{
 		_lynneSprite = GetNode<AnimatedSprite2D>("LynneSprite");
@@ -40,10 +44,18 @@ public partial class CharacterBody2d : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 
+		// Gun and Bullet
+		if (Input.IsActionJustPressed("click"))
+		{
+			Node2D bulletInstance = (Node2D)bullet.Instantiate();
+			bulletInstance.Position = Position;
+			GetParent().AddChild(bulletInstance);
+		}
+
 		if (velocity.X != 0)
-			_lynneSprite.Play("running");
-		else
-			_lynneSprite.Play("idle");
+				_lynneSprite.Play("running");
+			else
+				_lynneSprite.Play("idle");
 
 		UpdateFacingDirection();
 	}

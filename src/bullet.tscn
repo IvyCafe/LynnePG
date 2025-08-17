@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://detetc34xwnwf"]
+
+[ext_resource type="Script" path="res://src/Bullet.cs" id="1_c5f60"]
+[ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_vlebm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iv4um"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwmxq"]
+radius = 12.0416
+
+[node name="Bullet" type="RigidBody2D"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_iv4um")
+gravity_scale = 0.05
+script = ExtResource("1_c5f60")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_vlebm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kwmxq")
