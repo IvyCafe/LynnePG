@@ -24,7 +24,7 @@ public partial class CharacterBody2d : CharacterBody2D
 		// Speed ratio
 		float speedRatio;
 		if (Input.IsActionPressed("squat"))
-			speedRatio = 0.6f;
+			speedRatio = 0.8f;
 		else
 			speedRatio = 1.0f;
 
