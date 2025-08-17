@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://crvpnyynxgmpy"]
+[gd_scene load_steps=9 format=4 uid="uid://crvpnyynxgmpy"]
 
 [ext_resource type="Texture2D" uid="uid://cre3646xpapbe" path="res://res/map-texture.png" id="1_f4ehf"]
 [ext_resource type="Texture2D" uid="uid://ben4m28v53c8l" path="res://res/map-texture2.png" id="2_aiif7"]
+[ext_resource type="Texture2D" uid="uid://dft4khqayptxs" path="res://res/bg-blue.png" id="3_atlpj"]
+[ext_resource type="Texture2D" uid="uid://bvcc41y8u6nu2" path="res://res/bg-cloud.png" id="4_4atgt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txw20"]
 resource_name = "<null>"
@@ -100,6 +102,27 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7stw2")
 
 [node name="TileMap" type="Node"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -640)
+motion_scale = Vector2(0, 0)
+
+[node name="BlueBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_atlpj")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -640)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="CloudBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_4atgt")
+centered = false
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true

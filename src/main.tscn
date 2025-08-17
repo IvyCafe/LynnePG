@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://4iolnqhnlbty"]
+[gd_scene load_steps=6 format=3 uid="uid://4iolnqhnlbty"]
 
 [ext_resource type="PackedScene" uid="uid://crvpnyynxgmpy" path="res://src/map.tscn" id="1_2s5wl"]
 [ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_nqww8"]
 [ext_resource type="PackedScene" uid="uid://brt8i2p76fj4x" path="res://src/player/player.tscn" id="2_wyayg"]
 [ext_resource type="Script" path="res://src/Gun.cs" id="3_neoqn"]
-[ext_resource type="Texture2D" uid="uid://dft4khqayptxs" path="res://res/bg-blue.png" id="5_7c357"]
-[ext_resource type="Texture2D" uid="uid://bvcc41y8u6nu2" path="res://res/bg-cloud.png" id="6_buyjg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqcvw"]
 radius = 10.9949
@@ -46,24 +44,3 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -640)
-motion_scale = Vector2(0, 0)
-
-[node name="BlueBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(4, 4)
-texture = ExtResource("5_7c357")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -640)
-motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="CloudBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(4, 4)
-texture = ExtResource("6_buyjg")
-centered = false
