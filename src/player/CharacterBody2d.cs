@@ -11,6 +11,7 @@ public partial class CharacterBody2d : CharacterBody2D
 	public float Gravity { get; set; } = 1.0f;
 
 	private AnimatedSprite2D _lynneSprite;
+	private Gun _gunSprite;
 
 	[Export]
 	public float GunSpeed { get; set; } = 1000.0f;
@@ -19,6 +20,7 @@ public partial class CharacterBody2d : CharacterBody2D
 	public override void _Ready()
 	{
 		_lynneSprite = GetNode<AnimatedSprite2D>("LynneSprite");
+		_gunSprite = GetNode<Gun>("Gun");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -46,16 +48,16 @@ public partial class CharacterBody2d : CharacterBody2D
 
 		// Gun and Bullet
 		if (Input.IsActionJustPressed("click"))
-		{
-			Node2D bulletInstance = (Node2D)bullet.Instantiate();
-			bulletInstance.Position = Position;
-			GetParent().AddChild(bulletInstance);
-		}
+			_gunSprite.Shoot();
 
+		if (direction != Vector2.Zero)
+			_gunSprite.SetupDirection(direction);
+
+		// Animation
 		if (velocity.X != 0)
-				_lynneSprite.Play("running");
-			else
-				_lynneSprite.Play("idle");
+			_lynneSprite.Play("running");
+		else
+			_lynneSprite.Play("idle");
 
 		UpdateFacingDirection();
 	}

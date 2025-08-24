@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bawv1k8b2q46g"]
+
+[ext_resource type="Script" path="res://src/Gun.cs" id="1_lx0hd"]
+[ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="2_bemeo"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_lx0hd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.2)
+texture = ExtResource("2_bemeo")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(58, 0)
+
+[node name="ShootSpeedTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShootSpeedTimer" to="." method="_OnShootSpeedTimerTimeout"]
