@@ -12,6 +12,7 @@ public partial class CharacterBody2d : CharacterBody2D
 
 	private AnimatedSprite2D _lynneSprite;
 	private Vector2 _gunSpriteDefaultOffset;
+	private Vector2 _gunSpriteDefaultPosition;
 	private Gun _gunSprite;
 
 	[Export]
@@ -23,6 +24,7 @@ public partial class CharacterBody2d : CharacterBody2D
 		_lynneSprite = GetNode<AnimatedSprite2D>("LynneSprite");
 		_gunSprite = GetNode<Gun>("Gun");
 		_gunSpriteDefaultOffset = new Vector2(_gunSprite.Offset.X, _gunSprite.Offset.Y);
+		_gunSpriteDefaultPosition = new Vector2(_gunSprite.Position.X, _gunSprite.Position.Y);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -66,21 +68,19 @@ public partial class CharacterBody2d : CharacterBody2D
 
 	public void UpdateFacingDirection()
 	{
-		GD.Print(_gunSprite.Position);
-
 		if (Velocity.X < 0)
 		{
 			_lynneSprite.FlipH = true;
 			_gunSprite.FlipH = true;
 			_gunSprite.Offset = new Vector2(_gunSpriteDefaultOffset.X * -1, _gunSpriteDefaultOffset.Y);
-			// _lynneSprite.Scale = new Vector2(_lynneSpriteDefaultScale.X * -1, _lynneSpriteDefaultScale.Y);
+			_gunSprite.Position = new Vector2(_gunSpriteDefaultPosition.X * -1, _gunSpriteDefaultPosition.Y);
 		}
 		else if (Velocity.X > 0)
 		{
 			_lynneSprite.FlipH = false;
 			_gunSprite.FlipH = false;
 			_gunSprite.Offset = _gunSpriteDefaultOffset;
-			// _lynneSprite.Scale = new Vector2(_lynneSpriteDefaultScale.X, _lynneSpriteDefaultScale.Y);
+			_gunSprite.Position = _gunSpriteDefaultPosition;
 		}
 	}
 }

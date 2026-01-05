@@ -77,4 +77,4 @@ animation = &"running"
 shape = SubResource("CapsuleShape2D_1q7qm")
 
 [node name="Gun" parent="." instance=ExtResource("4_x2ty2")]
-position = Vector2(0, -20)
+position = Vector2(-24, -20)
