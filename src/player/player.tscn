@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/player/CharacterBody2d.cs" id="1_q416h"]
 [ext_resource type="Texture2D" uid="uid://b3fke5ff3adwc" path="res://res/lynne-idle.png" id="3_1bsg7"]
 [ext_resource type="Texture2D" uid="uid://3l1s0mo4ha1e" path="res://res/lynne-running.png" id="3_unggv"]
-[ext_resource type="PackedScene" uid="uid://bawv1k8b2q46g" path="res://src/gun.tscn" id="4_x2ty2"]
+[ext_resource type="PackedScene" uid="uid://bgf1pbn56jfo2" path="res://src/gun.tscn" id="4_x2ty2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk313"]
 atlas = ExtResource("3_1bsg7")
@@ -78,4 +78,4 @@ frame_progress = 0.828219
 shape = SubResource("CapsuleShape2D_1q7qm")
 
 [node name="Gun" parent="." instance=ExtResource("4_x2ty2")]
-position = Vector2(47, -3)
+position = Vector2(-4, -9)
