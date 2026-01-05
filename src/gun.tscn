@@ -1,20 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgf1pbn56jfo2"]
+[gd_scene load_steps=3 format=3 uid="uid://mtsfahpdv2au"]
 
-[ext_resource type="Script" path="res://src/Gun.cs" id="1_lx0hd"]
-[ext_resource type="Texture2D" uid="uid://cdoqdivblu21t" path="res://res/gun-p90.png" id="2_3f8ds"]
+[ext_resource type="Texture2D" uid="uid://cdoqdivblu21t" path="res://res/gun-p90.png" id="1_cweb7"]
+[ext_resource type="Script" path="res://src/Gun.cs" id="2_2icp8"]
 
-[node name="Gun" type="Node2D"]
-script = ExtResource("1_lx0hd")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.235397, -0.266708)
+[node name="Gun" type="Sprite2D"]
 scale = Vector2(2.4, 2.4)
-texture = ExtResource("2_3f8ds")
-offset = Vector2(29.9019, 2.19446)
+texture = ExtResource("1_cweb7")
+offset = Vector2(30, 2)
+script = ExtResource("2_2icp8")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(120, 0)
-
-[node name="ShootSpeedTimer" type="Timer" parent="."]
-
-[connection signal="timeout" from="ShootSpeedTimer" to="." method="_OnShootSpeedTimerTimeout"]
+position = Vector2(50, 0)

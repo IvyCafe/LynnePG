@@ -1,61 +1,18 @@
 using Godot;
 using System;
 
-public partial class Gun : Node2D
+public partial class Gun : Sprite2D
 {
-	[Export]
-	float shootSpeed = 2.0f;
-
-	bool canShoot = true;
-	Vector2 bulletDirection = new(1, 0);
-	private Marker2D _marker;
-	private Timer _timer;
-	readonly PackedScene BULLET = GD.Load<PackedScene>("res://src/bullet.tscn");
-
+	private Marker2D _marker_2d;
+	
+	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Connect("timeout", new Callable(this, nameof(_OnShootSpeedTimerTimeout)));
-
-		_marker = GetNode<Marker2D>("Marker2D");
-		_timer = GetNode<Timer>("ShootSpeedTimer");
-
-		_timer.WaitTime = 1.0f / shootSpeed;
+		_marker_2d = GetNode<Marker2D>("Marker2D");
 	}
 
-	public override void _PhysicsProcess(double delta)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
 	{
-		// SetupDirection();
-		// LookAt(GetGlobalMousePosition());
-		// MoveAndSlide();
-	}
-
-	public void _OnShootSpeedTimerTimeout()
-	{
-		canShoot = true;
-	}
-
-	public void Shoot()
-	{
-		if (canShoot)
-		{
-			canShoot = false;
-			_timer.Start();
-
-			Bullet bulletNode = (Bullet)BULLET.Instantiate();
-
-			bulletNode.SetDirection(bulletDirection);
-			GetTree().Root.AddChild(bulletNode);
-			bulletNode.GlobalPosition = _marker.GlobalPosition;
-		}
-	}
-
-	public void SetupDirection(Vector2 direction)
-	{
-		bulletDirection = direction;
-
-		Vector2 mousePosition = GetGlobalMousePosition();
-		float mouseRad = mousePosition.Y / mousePosition.X;
-		float mouseDeg = Mathf.RadToDeg(mouseRad);
-		RotationDegrees = mouseDeg;
 	}
 }
