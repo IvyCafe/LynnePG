@@ -71,21 +71,26 @@ public partial class CharacterBody2d : CharacterBody2D
 
 	public void UpdateFacingDirection()
 	{
-		if (Velocity.X < 0)
+		// if (Velocity.X < 0)
+		// 	_lynneSprite.FlipH = true;
+		// else if (Velocity.X > 0)
+		// 	_lynneSprite.FlipH = false;
+
+		if (GetLocalMousePosition().X < 0)
 		{
-			// _lynneSprite.FlipH = true;
+			_lynneSprite.FlipH = true;
+
 			_gunSprite.FlipH = true;
-			_lynneSprite.Scale = new Vector2(_lynneSpriteDefaultTransform.Scale.X * -1, _lynneSpriteDefaultTransform.Scale.Y);
 			_gunSprite.Scale = new Vector2(_gunSpriteDefaultTransform.Scale.X * -1, _gunSpriteDefaultTransform.Scale.Y * -1);
 			_gunSprite.Rotation = _gunSpriteDefaultTransform.Rotation + Mathf.Pi;
 			_gunSprite.Offset = new Vector2(_gunSpriteDefaultOffset.X * -1, _gunSpriteDefaultOffset.Y);
 			_gunSprite.Position = new Vector2(_gunSpriteDefaultTransform.Origin.X * -1, _gunSpriteDefaultTransform.Origin.Y);
 		}
-		else if (Velocity.X > 0)
+		else if (GetLocalMousePosition().X > 0)
 		{
-			// _lynneSprite.FlipH = false;
+			_lynneSprite.FlipH = false;
+
 			_gunSprite.FlipH = false;
-			_lynneSprite.Scale = _lynneSpriteDefaultTransform.Scale;
 			_gunSprite.Scale = _gunSpriteDefaultTransform.Scale;
 			_gunSprite.Offset = _gunSpriteDefaultOffset;
 			_gunSprite.Position = _gunSpriteDefaultTransform.Origin;
