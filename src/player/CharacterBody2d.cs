@@ -14,7 +14,9 @@ public partial class CharacterBody2d : CharacterBody2D
 	private Transform2D _lynneSpriteDefaultTransform;
 	private Vector2 _gunSpriteDefaultOffset;
 	private Gun _gunSprite;
+	private Marker2D _gunMarkerSprite;
 	private Transform2D _gunSpriteDefaultTransform;
+	private Transform2D _gunMarkerDefaultTransform;
 
 	[Export]
 	public float GunSpeed { get; set; } = 1000.0f;
@@ -28,6 +30,9 @@ public partial class CharacterBody2d : CharacterBody2D
 		_gunSprite = GetNode<Gun>("Gun");
 		_gunSpriteDefaultTransform = _gunSprite.Transform;
 		_gunSpriteDefaultOffset = new Vector2(_gunSprite.Offset.X, _gunSprite.Offset.Y);
+
+		_gunMarkerSprite = GetNode<Marker2D>("Gun/Marker2D");
+		_gunMarkerDefaultTransform = _gunMarkerSprite.Transform;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -54,11 +59,8 @@ public partial class CharacterBody2d : CharacterBody2D
 		MoveAndSlide();
 
 		// Gun and Bullet
-		// if (Input.IsActionJustPressed("click"))
-		// 	_gunSprite.Shoot();
-
-		// if (direction != Vector2.Zero)
-		// 	_gunSprite.SetupDirection(direction);
+		if (Input.IsActionJustPressed("click"))
+			_gunSprite.Shoot();
 
 		// Animation
 		if (velocity.X != 0)
@@ -85,6 +87,8 @@ public partial class CharacterBody2d : CharacterBody2D
 			_gunSprite.Rotation = _gunSpriteDefaultTransform.Rotation + Mathf.Pi;
 			_gunSprite.Offset = new Vector2(_gunSpriteDefaultOffset.X * -1, _gunSpriteDefaultOffset.Y);
 			_gunSprite.Position = new Vector2(_gunSpriteDefaultTransform.Origin.X * -1, _gunSpriteDefaultTransform.Origin.Y);
+
+			_gunMarkerSprite.Position = new Vector2(_gunMarkerDefaultTransform.Origin.X * -1, _gunMarkerDefaultTransform.Origin.Y * -1);
 		}
 		else if (GetLocalMousePosition().X > 0)
 		{
@@ -94,6 +98,8 @@ public partial class CharacterBody2d : CharacterBody2D
 			_gunSprite.Scale = _gunSpriteDefaultTransform.Scale;
 			_gunSprite.Offset = _gunSpriteDefaultOffset;
 			_gunSprite.Position = _gunSpriteDefaultTransform.Origin;
+			
+			_gunMarkerSprite.Position = _gunMarkerDefaultTransform.Origin;
 		}
 	}
 }
