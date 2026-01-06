@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://4iolnqhnlbty"]
+[gd_scene load_steps=3 format=3 uid="uid://4iolnqhnlbty"]
 
 [ext_resource type="PackedScene" uid="uid://crvpnyynxgmpy" path="res://src/map.tscn" id="1_2s5wl"]
-[ext_resource type="Texture2D" uid="uid://dljdh4juu01gw" path="res://res/icon.svg" id="1_nqww8"]
 [ext_resource type="PackedScene" uid="uid://brt8i2p76fj4x" path="res://src/player/player.tscn" id="2_wyayg"]
-[ext_resource type="Script" path="res://src/Gun.cs" id="3_neoqn"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqcvw"]
-radius = 10.9949
-height = 78.0247
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Map" parent="." instance=ExtResource("1_2s5wl")]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(-494, 484)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_wyayg")]
 z_index = 10
@@ -20,27 +21,5 @@ Speed = 560.0
 JumpVelocity = -900.0
 Gravity = 2.0
 
-[node name="Gun2" type="CharacterBody2D" parent="Player"]
-visible = false
-script = ExtResource("3_neoqn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/Gun2"]
-position = Vector2(61, -4)
-scale = Vector2(0.814499, 0.287231)
-texture = ExtResource("1_nqww8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Gun2"]
-position = Vector2(61, -5)
-rotation = -1.59154
-shape = SubResource("CapsuleShape2D_mqcvw")
-disabled = true
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera")
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(-494, 484)
-process_callback = 0
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true

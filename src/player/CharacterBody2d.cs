@@ -11,10 +11,28 @@ public partial class CharacterBody2d : CharacterBody2D
 	public float Gravity { get; set; } = 1.0f;
 
 	private AnimatedSprite2D _lynneSprite;
+	private Transform2D _lynneSpriteDefaultTransform;
+	private Vector2 _gunSpriteDefaultOffset;
+	private Gun _gunSprite;
+	private Marker2D _gunMarkerSprite;
+	private Transform2D _gunSpriteDefaultTransform;
+	private Transform2D _gunMarkerDefaultTransform;
+
+	[Export]
+	public float GunSpeed { get; set; } = 1000.0f;
+	readonly PackedScene bullet = GD.Load<PackedScene>("res://src/bullet.tscn");
 
 	public override void _Ready()
 	{
 		_lynneSprite = GetNode<AnimatedSprite2D>("LynneSprite");
+		_lynneSpriteDefaultTransform = _lynneSprite.Transform;
+
+		_gunSprite = GetNode<Gun>("Gun");
+		_gunSpriteDefaultTransform = _gunSprite.Transform;
+		_gunSpriteDefaultOffset = new Vector2(_gunSprite.Offset.X, _gunSprite.Offset.Y);
+
+		_gunMarkerSprite = GetNode<Marker2D>("Gun/Marker2D");
+		_gunMarkerDefaultTransform = _gunMarkerSprite.Transform;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -47,6 +65,11 @@ public partial class CharacterBody2d : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 
+		// Gun and Bullet
+		if (Input.IsActionJustPressed("click"))
+			_gunSprite.Shoot();
+
+		// Animation
 		if (velocity.X != 0)
 			_lynneSprite.Play("running");
 		else
@@ -57,9 +80,33 @@ public partial class CharacterBody2d : CharacterBody2D
 
 	public void UpdateFacingDirection()
 	{
-		if (Velocity.X < 0)
+		// if (Velocity.X < 0)
+		// 	_lynneSprite.FlipH = true;
+		// else if (Velocity.X > 0)
+		// 	_lynneSprite.FlipH = false;
+
+		if (GetLocalMousePosition().X < 0)
+		{
 			_lynneSprite.FlipH = true;
-		else if (Velocity.X > 0)
+
+			_gunSprite.FlipH = true;
+			_gunSprite.Scale = new Vector2(_gunSpriteDefaultTransform.Scale.X * -1, _gunSpriteDefaultTransform.Scale.Y * -1);
+			_gunSprite.Rotation = _gunSpriteDefaultTransform.Rotation + Mathf.Pi;
+			_gunSprite.Offset = new Vector2(_gunSpriteDefaultOffset.X * -1, _gunSpriteDefaultOffset.Y);
+			_gunSprite.Position = new Vector2(_gunSpriteDefaultTransform.Origin.X * -1, _gunSpriteDefaultTransform.Origin.Y);
+
+			_gunMarkerSprite.Position = new Vector2(_gunMarkerDefaultTransform.Origin.X * -1, _gunMarkerDefaultTransform.Origin.Y * -1);
+		}
+		else if (GetLocalMousePosition().X > 0)
+		{
 			_lynneSprite.FlipH = false;
+
+			_gunSprite.FlipH = false;
+			_gunSprite.Scale = _gunSpriteDefaultTransform.Scale;
+			_gunSprite.Offset = _gunSpriteDefaultOffset;
+			_gunSprite.Position = _gunSpriteDefaultTransform.Origin;
+			
+			_gunMarkerSprite.Position = _gunMarkerDefaultTransform.Origin;
+		}
 	}
 }
