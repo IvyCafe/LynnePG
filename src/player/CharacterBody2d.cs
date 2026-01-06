@@ -39,21 +39,28 @@ public partial class CharacterBody2d : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
+		// Speed ratio
+		float speedRatio;
+		if (Input.IsActionPressed("squat"))
+			speedRatio = 0.8f;
+		else
+			speedRatio = 1.0f;
+
 		// Add the gravity.
 		if (!IsOnFloor())
 			velocity += GetGravity() * (float)delta * Gravity;
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
-			velocity.Y = JumpVelocity;
+			velocity.Y = JumpVelocity * speedRatio;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("left", "right", "jump", "squat");
 		if (direction != Vector2.Zero)
-			velocity.X = direction.X * Speed;
+			velocity.X = direction.X * Speed * speedRatio;
 		else
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed) * speedRatio;
 
 		Velocity = velocity;
 		MoveAndSlide();
