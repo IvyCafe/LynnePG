@@ -16,7 +16,7 @@ public partial class Bullet : CharacterBody2D
 		// Connect("body_entered", new Callable(this, nameof(_OnBodyEntered)));
 
 		LookAt(GetGlobalMousePosition());
-		GetTree().CreateTimer(3).Timeout += QueueFree; // Despawn
+		GetTree().CreateTimer(3).Timeout += QueueFree; // Auto Despawn
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +25,9 @@ public partial class Bullet : CharacterBody2D
 		Velocity = TargetPosition * Speed;
 		// Velocity = TargetPosition * Speed * (float)delta;
 		MoveAndSlide();
+
+		if (IsOnFloor())
+			QueueFree();
 	}
 	
 	// public void _OnBodyEntered(Node2D body)
