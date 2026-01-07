@@ -8,7 +8,7 @@
 [node name="Map" parent="." instance=ExtResource("1_2s5wl")]
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(-494, 484)
+position = Vector2(-500, 500)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -16,7 +16,7 @@ drag_vertical_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_wyayg")]
 z_index = 10
-position = Vector2(-494, 484)
+position = Vector2(-500, 500)
 Speed = 560.0
 JumpVelocity = -900.0
 Gravity = 2.0
