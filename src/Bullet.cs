@@ -26,7 +26,7 @@ public partial class Bullet : CharacterBody2D
 		// Velocity = TargetPosition * Speed * (float)delta;
 		MoveAndSlide();
 
-		if (IsOnFloor())
+		if (IsOnFloor() || IsOnWall() || IsOnCeiling())
 			QueueFree();
 	}
 	
